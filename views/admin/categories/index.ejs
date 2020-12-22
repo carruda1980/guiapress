@@ -1,6 +1,9 @@
 <%- include ('../../partials/header.ejs') %>
 <%- include ('../../partials/navbar.ejs') %>
 <div class="container">
+    <h1>Categorias</h1>
+    <a class="btn btn-success" href="/admin/categories/new">Cadastrar categoria</a>
+    <br>
     <table class="table">
         <thead>
             <tr>
@@ -16,7 +19,10 @@
                     <th><%= category.id %></th>
                     <th><%= category.title %></th>
                     <th><%= category.slug %></th>
-                    <th></th>
+                    <th>
+                        <button class="btn btn-warning">Editar</button>
+                        <button class="btn btn-danger">Excluir</button>
+                    </th>
                 </tr>
             <% }) %>
             
