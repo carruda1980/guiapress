@@ -9,6 +9,13 @@
         <div class="card-body">
             <form method="POST" action="/categories/save">
                 <input class="form-control" type="text" name="title" placeholder="Informe um novo artigo"><br>
+                <h3>Categoria</h3>
+                <select class="form-control" name="category">
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category.id %>"><%= category.title %></option>
+                    <% }) %>
+                </select>
+                <br>
                 <textarea class="form-control" id="body" name="body"></textarea><br>
                 <button class="btn btn-success">
                     Cadastrar
@@ -25,7 +32,7 @@
         language: 'pt_BR',
         selector: "#body",
         plugins: [
-            'advlist autolink link image lists print preview searchplace wordcount table insertdatetime'
+            'advlist autolink link image lists print preview wordcount table insertdatetime'
         ]
     })
 </script>
