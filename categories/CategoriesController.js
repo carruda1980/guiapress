@@ -41,10 +41,28 @@ router.post('/categories/save', (req, res) => {
             title: title,
             slug: Slugify(title)
         }).then(() =>{
-            res.redirect('/')
+            res.redirect('/admin/categories')
         });
     }else{
         res.redirect('/admin/categories/new')
+    }
+});
+
+router.get('/admin/categories/edit/:id', (req, res) => {
+    var id = req.params.id;
+    console.log(id);
+    if(id != undefined){
+        if(!isNaN(id)){
+            Category.findByPk(id).then(category => {
+                res.render('admin/categories/edit', {
+                    category: category
+                })
+            })
+        }else{
+            res.redirect('/admin/categories');
+        }
+    }else{
+        res.redirect('/admin/categories')
     }
 });
 
