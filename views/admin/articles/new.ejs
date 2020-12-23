@@ -9,7 +9,7 @@
         <div class="card-body">
             <form method="POST" action="/categories/save">
                 <input class="form-control" type="text" name="title" placeholder="Informe um novo artigo"><br>
-                <textarea class="form-control"></textarea><br>
+                <textarea class="form-control" id="body" name="body"></textarea><br>
                 <button class="btn btn-success">
                     Cadastrar
                 </button>
@@ -18,3 +18,13 @@
     </div>
 </div>
 <%- include ('../../partials/footer.ejs') %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: "#body",
+        plugins: [
+            'advlist autolink link image lists print preview searchplace wordcount table insertdatetime'
+        ]
+    })
+</script>
