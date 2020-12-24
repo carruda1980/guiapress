@@ -34,9 +34,12 @@ app.use('/', articlesController);
 
 app.get('/', (req, res)=> {
     Article.findAll().then(articles => {
-        res.render("index.ejs", {
-            articles: articles
-        });
+        Category.findAll().then(categories => {
+            res.render("index", {
+                articles: articles,
+                categories: categories
+            });
+        })
     })
 });
 
@@ -48,8 +51,11 @@ app.get('/:slug', (req, res) => {
         }
     }).then(article => {
         if(article != undefined){
-            res.render('article', {
-                article: article
+            Category.findAll().then(categories => {
+                res.render("article", {
+                    article: article,
+                    categories: categories
+                });
             })
         }else {
             res.redirect('/')
