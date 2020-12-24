@@ -33,7 +33,11 @@ app.use('/', categoriesController);
 app.use('/', articlesController);
 
 app.get('/', (req, res)=> {
-    res.render("index.ejs");
+    Article.findAll().then(articles => {
+        res.render("index.ejs", {
+            articles: articles
+        });
+    })
 });
 
 app.listen(8080, () =>{
