@@ -45,7 +45,7 @@ router.get('/admin/articles', adminAuth, (req, res) => {
         });
     });
 
-router.post('/articles/save', adminAuth, (req, res) => {
+router.post('/articles/save', (req, res) => {
     var categoryId = req.body.category;
     var body = req.body.body;
     var title = req.body.title;
@@ -60,7 +60,7 @@ router.post('/articles/save', adminAuth, (req, res) => {
     })
 });
 
-router.post('/articles/delete', adminAuth, (req, res) => {
+router.post('/articles/delete', (req, res) => {
     var id = req.body.id;
     if(id != undefined){
         if(!isNaN(id)){
