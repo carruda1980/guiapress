@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const connection = require('./database/database');
 
@@ -15,6 +16,14 @@ const User = require('./users/User');
 // View engine
 app.set('view engine', 'ejs');
 
+
+// Session
+app.user(session({
+    secret: 'umasecretkeyforteaqui',
+    cookie: {
+        maxAge: 30000
+    }
+}));
 
 // Bodry parser
 app.use(bodyParser.urlencoded({extended: false}));
