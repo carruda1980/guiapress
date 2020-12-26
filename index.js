@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 
 
 // Session
-app.user(session({
+app.use(session({
     secret: 'umasecretkeyforteaqui',
     cookie: {
         maxAge: 30000
